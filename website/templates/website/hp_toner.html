@@ -1,0 +1,32 @@
+{% load static %}
+
+{% include "website/partials/_navbar.html" %}
+
+
+    <!-- Breadcrumb Start -->
+  
+
+    
+   
+    <h1>{{ marka }} - {{ model }} Tonerler</h1>
+
+    {% if toners %}
+    <div class="toner-list">
+        {% for toner in toners %}
+        <div class="toner-item">
+            <h2>{{ toner.marka }} {{ toner.model }}</h2>
+            {% if toner.resim %}
+            <img src="{{ toner.resim.url }}" alt="{{ toner.marka }} {{ toner.model }}" style="width: 200px; height: auto;">
+            {% endif %}
+            <p>{{ toner.aciklama }}</p>
+            <p><strong>Fiyat:</strong> {{ toner.fiyat }} TL</p>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>Bu marka ve modelde ürün bulunamadı.</p>
+    {% endif %}
+   
+
+{% include "website/partials/_footer.html" %}
